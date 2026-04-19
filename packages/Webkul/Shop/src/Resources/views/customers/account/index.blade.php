@@ -1,0 +1,72 @@
+<x-shop::layouts.account>
+    <!-- Page Title -->
+    <x-slot:title>
+        @lang('shop::app.customers.account.orders.title')
+    </x-slot>
+
+    <!-- Breadcrumbs -->
+    @if ((core()->getConfigData('general.general.breadcrumbs.shop')))
+        @section('breadcrumbs')
+            <x-shop::breadcrumbs name="orders" />
+        @endSection
+    @endif
+
+    @push('styles')
+    <style>
+        .kv-account-nav-wrap { padding: 0 1rem; }
+        .kv-logout-card {
+            max-width: 440px;
+            margin: 2rem auto 0;
+            border-radius: 1.25rem;
+            border: 1.5px solid rgba(99,102,241,0.15);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px rgba(99,102,241,0.07);
+            overflow: hidden;
+        }
+        .kv-logout-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2.5rem 2rem;
+        }
+        .kv-logout-icon {
+            width: 3.5rem; height: 3.5rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(239,68,68,0.10), rgba(249,115,22,0.08));
+            border: 1.5px solid rgba(239,68,68,0.18);
+            display: flex; align-items: center; justify-content: center;
+            color: #ef4444;
+        }
+        .kv-logout-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 2rem; border-radius: 9999px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            color: #fff; font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; border: none; cursor: pointer;
+            box-shadow: 0 4px 16px rgba(239,68,68,0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+        .kv-logout-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(239,68,68,0.35);
+        }
+        .kv-divider {
+            width: 100%; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(99,102,241,0.15), transparent);
+            margin: 0.25rem 0;
+        }
+    </style>
+    @endpush
+
+    <div class="kv-account-nav-wrap">
+        <x-shop::layouts.account.navigation />
+    </div>
+
+    <span class="mb-5 mt-2 w-full border-t border-zinc-200/70"></span>
+
+
+</x-shop::layouts.account>
