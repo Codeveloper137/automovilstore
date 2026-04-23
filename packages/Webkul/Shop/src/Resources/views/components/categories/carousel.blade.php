@@ -42,7 +42,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
                             {{ $category->description ?? 'Explora nuestra colección exclusiva de ' . $category->name }}
                         </p>
-                        <a href="{{ url($category->url_path) }}" class="inline-flex items-center text-blue-600 font-black text-xs uppercase tracking-widest hover:text-black transition-colors">
+                        <a href="{{ $category->url_path ? url($category->url_path) : '#' }}" class="inline-flex items-center text-blue-600 font-black text-xs uppercase tracking-widest hover:text-black transition-colors">
                             Ver Colección <span class="ml-2">→</span>
                         </a>
                     </div>

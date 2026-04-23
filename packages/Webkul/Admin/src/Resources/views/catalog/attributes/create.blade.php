@@ -235,7 +235,7 @@
                                                     <i class="icon-drag cursor-grab text-xl transition-all group-hover:text-gray-700"></i>
 
                                                     <input
-                                                        type="hidden"
+                                                        type="hidden" 
                                                         :name="'options[' + element.id + '][position]'"
                                                         :value="index"
                                                     />

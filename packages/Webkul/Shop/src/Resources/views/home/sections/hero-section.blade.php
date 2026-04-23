@@ -4,7 +4,7 @@
     $heroStats = [
         [
             'val'   => '500+',
-            'label' => 'Clientes Felices',
+            'label' => 'Clientes Satisfechos',
             'color' => '#6366f1',
             'icon'  => 'badge',
         ],
@@ -39,15 +39,15 @@
                 <svg class="kv-hero-badge-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 3l14 9-14 9V3z" />
                 </svg>
-                <span class="kv-hero-badge-text">KillaVibes Premium</span>
+                <span class="kv-hero-badge-text">Automovil Store</span>
                 <div class="kv-hero-badge-dot"></div>
             </div>
 
             <h1 class="kv-hero-h1">
-                Tecnología<br>
-                que
+                Conduce tu<br>
+                sueño
                 <span class="kv-hero-h1-word">
-                    <span class="kv-hero-h1-grad">vibra</span>
+                    <span class="kv-hero-h1-grad">Hoy</span>
                     <svg class="kv-hero-underline" height="10" viewBox="0 0 200 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 7 Q40 1,100 6 T200 5" stroke="url(#hug)" stroke-width="2.5" fill="none" opacity="0.55" />
                         <defs>
@@ -58,14 +58,14 @@
                         </defs>
                     </svg>
                 </span>
-                <br>contigo
+                <br>mismo
             </h1>
 
             <p class="kv-hero-desc">
-                Descubre los mejores productos tecnológicos en
-                <strong style="color:#6366f1;font-weight:600;">Barranquilla</strong>.
-                Audífonos, parlantes, compresores y más —
-                <strong style="color:#22d3ee;font-weight:600;">envíos gratis</strong>
+                Descubre los mejores ofertas en todo
+                <strong style="color:#6366f1;font-weight:600;">Colombia</strong>.
+               <br> KIA, RENAULT, TOYOTA, MAZDA, CHEVROLET & SUZUKI.
+                <strong style="color:#22d3ee;font-weight:600;"></strong>
                 y garantía total.
             </p>
 

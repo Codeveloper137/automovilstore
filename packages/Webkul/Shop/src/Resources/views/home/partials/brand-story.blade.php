@@ -357,16 +357,15 @@
                 </div>
 
                 <h2 class="kvbs-title">
-                    Nació en Barranquilla<br>
-                    para <span class="kv-gradient-text">vibrar contigo</span>
+                    Comercialización de Vehículos Usados<br>
+                    <span class="kv-gradient-text">En Colombia.</span>
                 </h2>
 
                 <p class="kvbs-desc">
-                    KillaVibes nació de una pasión genuina por la tecnología y la cultura caribeña.
-                    Creemos que los mejores gadgets deben estar al alcance de todos, con
-                    <strong style="color:#6366f1;font-weight:600;">atención personalizada</strong>,
-                    productos <strong style="color:#22d3ee;font-weight:600;">100% originales</strong>
-                    y la vibra que solo Barranquilla sabe dar.
+                    AutomovilStore nació para optimizar el proceso de comercialización de vehículos de segunda mano:
+                    <strong style="color:#6366f1;font-weight:600;">compra, venta  y exhibición </strong>,
+                    al alcance de cualquiera <strong style="color:#22d3ee;font-weight:600;">Vehículos 100% Garantizados.</strong>
+                    
                 </p>
 
                 <div class="kvbs-divider-label">

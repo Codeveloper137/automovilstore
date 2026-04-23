@@ -21,12 +21,6 @@
         overflow: visible;
     "
 >
-    <style>
-
-        #kv-header.kv-scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-    </style>
 
     {{-- Desktop nav --}}
     <div class="max-lg:hidden">
@@ -162,3 +156,13 @@
     });
 </script>
 @endPushOnce
+
+
+@push('styles')
+<style >
+
+        #kv-header.kv-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+</style>
+@endpush

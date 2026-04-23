@@ -1,4 +1,4 @@
-{{-- cta-final-section.blade.php --}}
+<!-- {{-- cta-final-section.blade.php --}}
 
 @php
 
@@ -70,4 +70,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

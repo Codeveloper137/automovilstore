@@ -3,25 +3,6 @@ $showCompare = (bool) core()->getConfigData('catalog.products.settings.compare_o
 $showWishlist = (bool) core()->getConfigData('customer.settings.wishlist.wishlist_option');
 @endphp
 
-<style>
-    .kv-mob-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 9999px;
-        color: #374151;
-        text-decoration: none;
-        transition: color 0.2s ease, background-color 0.2s ease;
-        cursor: pointer;
-    }
-
-    .kv-mob-btn:hover {
-        color: #6366f1;
-        background-color: rgba(99, 102, 241, 0.10);
-    }
-</style>
 
 {{-- Solo visible en mobile/tablet (oculto en lg+) --}}
 <div class="lg:hidden"
@@ -469,3 +450,25 @@ $showWishlist = (bool) core()->getConfigData('customer.settings.wishlist.wishlis
 </script>
 
 @endPushOnce
+
+@push('styles')
+<style>
+    .kv-mob-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        color: #374151;
+        text-decoration: none;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        cursor: pointer;
+    }
+
+    .kv-mob-btn:hover {
+        color: #6366f1;
+        background-color: rgba(99, 102, 241, 0.10);
+    }
+</style>
+@endpush
