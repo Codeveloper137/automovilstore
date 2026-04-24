@@ -1,68 +1,107 @@
 @push('styles')
 <style>
-    .kvf-panel {
-        position: relative;
-        background: rgba(255,255,255,0.92);
-        border: 2px solid rgba(226,232,240,0.55);
-        border-radius: 1.25rem;
-        box-shadow: 0 4px 20px -4px rgba(99,102,241,0.10);
-        overflow: hidden;
-    }
-    .kvf-panel::before {
-        content: '';
-        position: absolute; top: 0; right: 0;
-        width: 6rem; height: 6rem;
-        background: linear-gradient(135deg, rgba(99,102,241,0.07), transparent);
-        border-radius: 0 1.25rem 0 100%;
-        pointer-events: none;
-    }
-    .kvf-panel__header {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 1.1rem 1.25rem 1rem;
-        border-bottom: 1px solid rgba(226,232,240,0.7);
-    }
-    .kvf-panel__title {
-        font-size: 0.78rem !important; font-weight: 700 !important;
-        text-transform: uppercase; letter-spacing: 0.09em;
-        background: linear-gradient(135deg, #6366f1, #22d3ee);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .kvf-panel__clear {
-        font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
-        color: rgba(99,102,241,0.55); cursor: pointer;
-        transition: color 0.2s;
-        border: none; background: none; padding: 0;
-    }
-    .kvf-panel__clear:hover { color: #6366f1; }
+  .kvf-panel {
+    position: relative;
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid rgba(226, 232, 240, 0.55);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 20px -4px rgba(99, 102, 241, 0.10);
+    overflow: hidden;
+  }
 
-    /* ── Filter option rows ── */
-    .kvf-option-row {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem; color: var(--foreground);
-        cursor: pointer; transition: background 0.15s;
-    }
-    .kvf-option-row:hover { background: rgba(99,102,241,0.04); }
-    .kvf-option-row--active {
-        background: rgba(99,102,241,0.06);
-        color: #6366f1; font-weight: 700;
-    }
-    .kvf-option-check {
-        display: inline-flex; align-items: center; justify-content: center;
-        width: 1.2rem; height: 1.2rem;
-        border-radius: 9999px;
-        background: linear-gradient(135deg, #6366f1, #22d3ee);
-        color: white; font-size: 0.6rem;
-        flex-shrink: 0;
-    }
+  .kvf-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6rem;
+    height: 6rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.07), transparent);
+    border-radius: 0 1.25rem 0 100%;
+    pointer-events: none;
+  }
 
-    /* ── Filter section header ── */
-    .kvf-section-title {
-        font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-        letter-spacing: 0.07em; color: var(--foreground);
-    }
+  .kvf-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem 1rem;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  }
 
-    /* ── Mobile bottom bar ──────────────────────────────────────────────────
+  .kvf-panel__title {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .kvf-panel__clear {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(99, 102, 241, 0.55);
+    cursor: pointer;
+    transition: color 0.2s;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .kvf-panel__clear:hover {
+    color: #6366f1;
+  }
+
+  /* ── Filter option rows ── */
+  .kvf-option-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .kvf-option-row:hover {
+    background: rgba(99, 102, 241, 0.04);
+  }
+
+  .kvf-option-row--active {
+    background: rgba(99, 102, 241, 0.06);
+    color: #6366f1;
+    font-weight: 700;
+  }
+
+  .kvf-option-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    color: white;
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  /* ── Filter section header ── */
+  .kvf-section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--foreground);
+  }
+
+  /* ── Mobile bottom bar ──────────────────────────────────────────────────
      *
      * CRÍTICO — por qué los drawers están FUERA de este elemento:
      *
@@ -80,50 +119,82 @@
      *
      * will-change: transform → hint GPU para la animación de scroll.
      * ──────────────────────────────────────────────────────────────────── */
-    .kvf-mobile-bar {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 40;
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        justify-items: center;
-        background: #ffffff;
-        border-top: 1px solid rgba(226,232,240,0.6);
-        box-shadow: 0 -2px 12px -2px rgba(99,102,241,0.10);
-        padding: 0 1.25rem;
-        transform: translateY(0);
-        will-change: transform;
-        /* transition se setea desde JS tras el montaje para evitar
+  .kvf-mobile-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-items: center;
+    background: #ffffff;
+    border-top: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 -2px 12px -2px rgba(99, 102, 241, 0.10);
+    padding: 0 1.25rem;
+    transform: translateY(0);
+    will-change: transform;
+    /* transition se setea desde JS tras el montaje para evitar
            animación flash en el primer render */
-    }
+  }
 
-    .kvf-mobile-btn {
-        display: flex; align-items: center; gap: 0.5rem;
-        padding: 0.875rem 0.75rem;
-        font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-        color: var(--foreground); cursor: pointer;
-        transition: color 0.2s;
-        background: none; border: none;
-        width: 100%; justify-content: center;
-    }
-    .kvf-mobile-btn:hover { color: #6366f1; }
-    .kvf-mobile-btn .kvf-icon { font-size: 1.2rem; color: #6366f1; }
-    .kvf-mobile-sep { width: 1px; height: 1.25rem; background: rgba(226,232,240,0.7); }
+  .kvf-mobile-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    width: 100%;
+    justify-content: center;
+  }
 
-    /* ── Price filter wrapper ── */
-    .kvf-price-wrap { padding: 0.5rem 1.5rem 1rem; }
+  .kvf-mobile-btn:hover {
+    color: #6366f1;
+  }
 
-    /* ── Drawer clear-all header button ── */
-    .kvf-drawer-clear {
-        font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
-        color: rgba(99,102,241,0.55); cursor: pointer;
-        transition: color 0.2s;
-        border: none; background: none; padding: 0;
-    }
-    .kvf-drawer-clear:hover { color: #6366f1; }
+  .kvf-mobile-btn .kvf-icon {
+    font-size: 1.2rem;
+    color: #6366f1;
+  }
+
+  .kvf-mobile-sep {
+    width: 1px;
+    height: 1.25rem;
+    background: rgba(226, 232, 240, 0.7);
+  }
+
+  /* ── Price filter wrapper ── */
+  .kvf-price-wrap {
+    padding: 0.5rem 1.5rem 1rem;
+  }
+
+  /* ── Drawer clear-all header button ── */
+  .kvf-drawer-clear {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(99, 102, 241, 0.55);
+    cursor: pointer;
+    transition: color 0.2s;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .kvf-drawer-clear:hover {
+    color: #6366f1;
+  }
+
 </style>
 @endpush
 
@@ -131,12 +202,9 @@
 
 <!-- ── Desktop Filters: columna lateral, sin cambios ── -->
 <div v-if="! isMobile">
-    <v-filters
-        @filter-applied="setFilters('filter', $event)"
-        @filter-clear="clearFilters('filter', $event)"
-    >
-        <x-shop::shimmer.categories.filters />
-    </v-filters>
+  <v-filters @filter-applied="setFilters('filter', $event)" @filter-clear="clearFilters('filter', $event)">
+    <x-shop::shimmer.categories.filters />
+  </v-filters>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
@@ -148,25 +216,17 @@
      ══════════════════════════════════════════════════════════════════════════ -->
 <div class="kvf-mobile-bar" v-if="isMobile">
 
-    <button
-        class="kvf-mobile-btn"
-        type="button"
-        @click="openDrawer('filter')"
-    >
-        <span class="kvf-icon icon-filter-1"></span>
-        @lang('shop::app.categories.filters.filter')
-    </button>
+  <button class="kvf-mobile-btn" type="button" @click="openDrawer('filter')">
+    <span class="kvf-icon icon-filter-1"></span>
+    @lang('shop::app.categories.filters.filter')
+  </button>
 
-    <span class="kvf-mobile-sep"></span>
+  <span class="kvf-mobile-sep"></span>
 
-    <button
-        class="kvf-mobile-btn"
-        type="button"
-        @click="openDrawer('toolbar')"
-    >
-        <span class="kvf-icon icon-sort-1"></span>
-        @lang('shop::app.categories.filters.sort')
-    </button>
+  <button class="kvf-mobile-btn" type="button" @click="openDrawer('toolbar')">
+    <span class="kvf-icon icon-sort-1"></span>
+    @lang('shop::app.categories.filters.sort')
+  </button>
 
 </div>
 
@@ -183,73 +243,56 @@
      ══════════════════════════════════════════════════════════════════════════ -->
 <template v-if="isMobile">
 
-    <!-- Drawer de Filtros -->
-<x-shop::drawer
-    position="bottom"
-    width="100%"
-    ::is-active="isDrawerActive.filter"
-    @close="isDrawerActive.filter = false"
->
-        <x-slot:toggle>
-            <span style="display:none;"></span>
-        </x-slot>
+  <!-- Drawer de Filtros -->
+  <x-shop::drawer position="bottom" width="100%" ::is-active="isDrawerActive.filter" @close="isDrawerActive.filter = false">
+    <x-slot:toggle>
+      <span style="display:none;"></span>
+      </x-slot>
 
-        <x-slot:header>
-            <div class="flex items-center justify-between">
-                <p class="kvf-panel__title" style="-webkit-text-fill-color:unset; color:#6366f1;">
-                    @lang('shop::app.categories.filters.filters')
-                </p>
-                <button
-                    class="kvf-drawer-clear ltr:mr-[50px] rtl:ml-[50px]"
-                    type="button"
-                    @click="clearFilters('filter', '')"
-                >
-                    @lang('shop::app.categories.filters.clear-all')
-                </button>
-            </div>
+      <x-slot:header>
+        <div class="flex items-center justify-between">
+          <p class="kvf-panel__title" style="-webkit-text-fill-color:unset; color:#6366f1;">
+            @lang('shop::app.categories.filters.filters')
+          </p>
+          <button class="kvf-drawer-clear ltr:mr-[50px] rtl:ml-[50px]" type="button" @click="clearFilters('filter', '')">
+            @lang('shop::app.categories.filters.clear-all')
+          </button>
+        </div>
         </x-slot>
 
         <x-slot:content class="!px-0">
-            <v-filters
-                @filter-applied="setFilters('filter', $event)"
-                @filter-clear="clearFilters('filter', $event)"
-            >
-                <x-shop::shimmer.categories.filters />
-            </v-filters>
-        </x-slot>
-    </x-shop::drawer>
+          <v-filters @filter-applied="setFilters('filter', $event)" @filter-clear="clearFilters('filter', $event)">
+            <x-shop::shimmer.categories.filters />
+          </v-filters>
+          </x-slot>
+  </x-shop::drawer>
 
-    <!-- Drawer de Ordenar -->
-<x-shop::drawer
-    position="bottom"
-    width="100%"
-    ::is-active="isDrawerActive.toolbar"
-    @close="isDrawerActive.toolbar = false"
->
-        <x-slot:toggle>
-            <span style="display:none;"></span>
-        </x-slot>
+  <!-- Drawer de Ordenar -->
+  <x-shop::drawer position="bottom" width="100%" ::is-active="isDrawerActive.toolbar" @close="isDrawerActive.toolbar = false">
+    <x-slot:toggle>
+      <span style="display:none;"></span>
+      </x-slot>
 
-        <x-slot:header>
-            <div class="flex items-center justify-between">
-                <p class="kvf-panel__title" style="-webkit-text-fill-color:unset; color:#6366f1;">
-                    @lang('shop::app.categories.filters.sort')
-                </p>
-            </div>
+      <x-slot:header>
+        <div class="flex items-center justify-between">
+          <p class="kvf-panel__title" style="-webkit-text-fill-color:unset; color:#6366f1;">
+            @lang('shop::app.categories.filters.sort')
+          </p>
+        </div>
         </x-slot>
 
         <x-slot:content class="!px-0">
-            @include('shop::categories.toolbar')
-        </x-slot>
-    </x-shop::drawer>
+          @include('shop::categories.toolbar')
+          </x-slot>
+  </x-shop::drawer>
 
 </template>
 
 {!! view_render_event('bagisto.shop.categories.view.filters.after') !!}
 
 @pushOnce('scripts')
-    <script type="text/x-template" id="v-filters-template">
-        <template v-if="isLoading">
+<script type="text/x-template" id="v-filters-template">
+  <template v-if="isLoading">
             <x-shop::shimmer.categories.filters />
         </template>
 
@@ -275,8 +318,8 @@
         </template>
     </script>
 
-    <script type="text/x-template" id="v-filter-item-template">
-        <template v-if="filter.type === 'price' || filter.options.length">
+<script type="text/x-template" id="v-filter-item-template">
+  <template v-if="filter.type === 'price' || filter.options.length">
             <x-shop::accordion class="last:border-b-0 border-b border-[rgba(226,232,240,0.55)]">
 
                 <x-slot:header class="px-5 py-3 max-sm:!pb-2">
@@ -338,8 +381,8 @@
         </template>
     </script>
 
-    <script type="text/x-template" id="v-price-filter-template">
-        <div style="padding:0.5rem 0;">
+<script type="text/x-template" id="v-price-filter-template">
+  <div style="padding:0.5rem 0;">
             <template v-if="isLoading">
                 <x-shop::shimmer.range-slider />
             </template>
@@ -356,8 +399,8 @@
         </div>
     </script>
 
-    <script type='module'>
-        app.component('v-filters', {
+<script type='module'>
+  app.component('v-filters', {
             template: '#v-filters-template',
 
             data() {
@@ -413,11 +456,11 @@
                 clear() {
                     this.filters.applied = {};
                     this.$refs.filterItemComponent.forEach((filterItem) => {
-                        if (filterItem.filter.code === 'price') {
-                            filterItem.$data.appliedValues = null;
-                        } else {
-                            filterItem.$data.appliedValues = [];
-                        }
+if (filterItem.filter.code === 'price') {
+    filterItem.$data.appliedValues = '';
+} else {
+    filterItem.$data.appliedValues = [];
+}
                     });
                     this.$emit('filter-applied', this.filters.applied);
                 },
@@ -432,7 +475,7 @@
             data() {
                 return {
                     active: true,
-                    appliedValues: null,
+                    appliedValues: [],
                     refreshKey: 0,
                 }
             },
@@ -451,7 +494,9 @@
                     ++this.refreshKey;
                     return;
                 }
-                this.appliedValues = this.$parent.$data.filters.applied[this.filter.code] ?? [];
+                const values = this.$parent.$data.filters.applied[this.filter.code];
+
+this.appliedValues = Array.isArray(values) ? values : [];
             },
 
             methods: {
