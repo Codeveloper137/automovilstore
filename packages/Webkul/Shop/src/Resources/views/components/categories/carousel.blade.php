@@ -1,53 +1,61 @@
+{{-- packages/Webkul/Shop/src/Resources/views/components/categories/carousel.blade.php --}}
+@props([
+'title' => '',
+'categories' => collect(),
+'navigationLink' => '#',
+])
 
-@section('page_title')
-    Explorar Categorías | KillaVibes
-@endsection
+<div class="kv-categories-carousel">
+  @if ($title)
+  <h2 class="kv-section-title">{{ $title }}</h2>
+  @endif
 
-@section('content-wrapper')
-    <div class="container py-12 px-6" style="max-width: 1280px; margin: 0 auto;">
-        <div class="mb-12 text-center">
-            <h1 class="text-4xl font-black text-black uppercase tracking-tighter">Categorías</h1>
-            <div class="h-1.5 w-24 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    @forelse ($categories as $category)
+    <a href="{{ $category->url_path ? url($category->url_path) : ($category->url ?? '#') }}" class="killa-category-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+      {{-- Imagen --}}
+      <div class="h-48 bg-gray-50 relative overflow-hidden">
+        @php
+        $image = $category->banner_url
+        ?? $category->image_url
+        ?? ($category->image ? asset('storage/' . $category->image) : null);
+        @endphp
+
+        @if ($image)
+        <img src="{{ $image }}" alt="{{ $category->name }}" class="w-full h-full object-cover">
+        @else
+        <div class="flex items-center justify-center h-full opacity-20">
+          <span class="text-3xl font-black uppercase">{{ $category->name }}</span>
         </div>
+        @endif
+      </div>
 
-        {{-- Grid de 3 Columnas --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            @php
-                $categories = app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id);
-            @endphp
+      {{-- Info --}}
+      <div class="p-5 flex flex-col flex-grow">
+        <h3 class="font-black text-gray-900 uppercase text-base leading-none mb-2">
+          {{ $category->name }}
+        </h3>
+        @if (!empty($category->description))
+<p class="text-gray-400 text-xs leading-relaxed flex-grow">
+    {!! html_entity_decode(strip_tags($category->description)) !!}
+</p>
+        @endif
+        <span class="mt-3 text-blue-600 font-bold text-xs uppercase tracking-widest">
+          Ver Colección →
+        </span>
+      </div>
+    </a>
+    @empty
+    <p class="col-span-4 text-center text-gray-400 py-10">Sin categorías por mostrar.</p>
+    @endforelse
+  </div>
 
-            @foreach ($categories as $category)
-                <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-100 group flex flex-col h-full transition-all hover:-translate-y-2">
+  @if ($navigationLink && $navigationLink !== '#')
+  <div class="text-center mt-8">
+    <a href="/collections" class="inline-block border border-gray-300 text-gray-700 px-8 py-3 rounded-full text-sm font-bold hover:bg-black hover:text-white transition-colors">
+      Ver todas las categorías
+    </a>
+  </div>
+  @endif
 
-                    {{-- Contenedor de Imagen --}}
-                    <div class="h-72 relative overflow-hidden bg-gray-50">
-                        @if ($category->image_url)
-                            <img src="{{ $category->image_url }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="{{ $category->name }}">
-                        @else
-                            <div class="flex items-center justify-center h-full opacity-30">
-                                <span class="text-4xl font-bold uppercase">{{ $category->name }}</span>
-                            </div>
-                        @endif
-
-                        <div class="absolute top-6 right-6 bg-yellow-400 text-black text-[10px] font-black px-4 py-1.5 rounded-lg uppercase shadow-lg">
-                            Destacada
-                        </div>
-                    </div>
-
-                    {{-- Info de Categoría --}}
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h2 class="text-2xl font-black text-gray-900 uppercase leading-none mb-3">
-                            {{ $category->name }}
-                        </h2>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-                            {{ $category->description ?? 'Explora nuestra colección exclusiva de ' . $category->name }}
-                        </p>
-                        <a href="{{ $category->url_path ? url($category->url_path) : '#' }}" class="inline-flex items-center text-blue-600 font-black text-xs uppercase tracking-widest hover:text-black transition-colors">
-                            Ver Colección <span class="ml-2">→</span>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-@endsection
+</div>

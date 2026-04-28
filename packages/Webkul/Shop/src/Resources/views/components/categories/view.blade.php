@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10">
     @foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category)
         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden group">
-            
+
             <div class="h-64 bg-gray-50 relative overflow-hidden">
                 @php $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->take(5); @endphp
 
@@ -31,11 +31,22 @@
 
 <script>
     // Script simple para mover los carruseles cada 3 segundos
-    document.querySelectorAll('[id^="carousel-"]').forEach(carousel => {
-        let index = 0;
-        setInterval(() => {
+document.querySelectorAll('[id^="carousel-"]').forEach(carousel => {
+    let index = 0;
+    let interval;
+
+    const start = () => {
+        interval = setInterval(() => {
             index = (index + 1) % carousel.children.length;
             carousel.style.transform = `translateX(-${index * 100}%)`;
         }, 3000);
-    });
+    };
+
+    const stop = () => clearInterval(interval);
+
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+
+    start();
+});
 </script>
